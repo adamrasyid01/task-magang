@@ -19,13 +19,13 @@ Fundamental Pemrograman
 
 Fundamental Javascript
 
-1. [Tipe Data](#4-paradigma-pemrograman)
-2. [Operator](#4-paradigma-pemrograman)
-3. [Function](#4-paradigma-pemrograman)
-4. [Looping](#4-paradigma-pemrograman)
-5. [Percabangan](#4-paradigma-pemrograman)
-6. [TypeCasting](#4-paradigma-pemrograman)
-7. [Variabel](#4-paradigma-pemrograman)
+1. [Tipe Data](#tipe-data-dalam-javascript)
+2. [Operator](#2-operator)
+3. [Function](#3-fungsi)
+4. [Looping](#4-looping)
+5. [Percabangan](#5-percabangan)
+6. [TypeCasting](#6-typecasting)
+7. [Variabel](#)
 
 
 
@@ -188,3 +188,153 @@ Terdapat berbagai jenis operator dalam JavaScript:
 | instanceof        | Mengembalikan true jika merupakan objek|
 
 # 3. Fungsi
+
+Berikut adalah rangkuman berbagai cara membuat fungsi dalam JavaScript dalam bentuk tabel:
+
+| Metode | Sintaks | Keterangan |
+|---|---|---|
+| **Function Declaration** | `function myFunction() { // kode }` | Metode tradisional untuk mendefinisikan fungsi dengan nama tertentu. |
+| **Function Expression** | `const myFunction = function() { // kode };` | Membuat fungsi yang dapat disimpan dalam variabel. |
+| **Arrow Function** | `const myFunction = () => { // kode };` | Sintaks yang lebih ringkas, sering digunakan untuk callback. |
+| **Anonymous Function** | `setTimeout(function() { // kode }, 1000);` | Fungsi tanpa nama, biasanya digunakan dalam callback. |
+| **IIFE (Immediately Invoked Function Expression)** | `(function() { // kode })();` | Fungsi yang dijalankan segera setelah didefinisikan. |
+| **Generator Function** | `function* myGeneratorFunction() { yield 'nilai'; }` | Membuat iterasi yang dapat dihentikan sementara dan dilanjutkan. |
+| **Async Function** | `async function myAsyncFunction() { // kode }` | Menangani operasi asinkron dengan cara yang lebih mudah. |
+| **Constructor Function** | `function MyConstructor() { this.property = 'nilai'; } const obj = new MyConstructor();` | Membuat objek baru dengan properti dan metode tertentu. |
+
+# 4. Looping
+
+Berikut adalah tabel yang berisi macam-macam looping di JavaScript:
+
+| Tipe Looping   | Sintaks                                               | Deskripsi                                                                                                         |
+|----------------|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `for`          | `for (initialization; condition; increment) { //code }` | Loop ini digunakan untuk mengulangi blok kode sejumlah yang ditentukan.                                          |
+| `while`        | `while (condition) { //code }`                         | Loop ini digunakan untuk mengulangi blok kode selama kondisi yang diberikan bernilai `true`.                      |
+| `do...while`   | `do { //code } while (condition);`                     | Loop ini mirip dengan `while` loop, namun blok kode akan dieksekusi setidaknya sekali, sebelum kondisi diuji.     |
+| `for...in`     | `for (variable in object) { //code }`                  | Loop ini digunakan untuk mengulangi properti-properti yang enumerable dari suatu objek.                           |
+| `for...of`     | `for (variable of iterable) { //code }`                | Loop ini digunakan untuk mengulangi nilai-nilai dari iterable objects seperti array, string, Map, Set, dll.      |
+| `forEach`      | `array.forEach(function(currentValue, index, arr) { //code })` | Metode ini memanggil fungsi untuk setiap elemen array.                                                             |
+
+# 5. Percabangan
+
+Berikut adalah tabel yang berisi macam-macam percabangan dalam JavaScript beserta sintaks dan deskripsinya:
+
+| Tipe Percabangan          | Sintaks                                                                                 | Deskripsi                                                                                               |
+|---------------------------|------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| `if`                      | `if (condition) { // code }`                                                             | Menjalankan blok kode jika kondisi yang diberikan bernilai `true`.                                     |
+| `if...else`               | `if (condition) { // code } else { // code }`                                            | Menjalankan blok kode pertama jika kondisi bernilai `true`, jika tidak maka menjalankan blok kode kedua.|
+| `if...else if...else`     | `if (condition1) { // code } else if (condition2) { // code } else { // code }`          | Memeriksa beberapa kondisi dan menjalankan blok kode yang sesuai dengan kondisi yang bernilai `true`.  |
+| `switch`                  | `switch (expression) { case value1: // code break; case value2: // code break; default: // code }` | Memilih salah satu dari banyak blok kode yang akan dijalankan berdasarkan nilai dari ekspresi.        |
+
+# 6. Typecasting
+Dalam JavaScript, typecasting (konversi tipe data) adalah proses mengubah satu tipe data menjadi tipe data lain. Ini bisa dilakukan secara eksplisit (disebut **typecasting eksplisit**) atau secara implisit (disebut **type coercion**). Berikut adalah beberapa cara umum untuk melakukan typecasting di JavaScript:
+
+### Typecasting Eksplisit
+
+1. **Mengubah ke String**:
+    - Menggunakan `String()`:
+      ```javascript
+      let num = 123;
+      let str = String(num); // "123"
+      ```
+    - Menggunakan `toString()`:
+      ```javascript
+      let num = 123;
+      let str = num.toString(); // "123"
+      ```
+
+2. **Mengubah ke Number**:
+    - Menggunakan `Number()`:
+      ```javascript
+      let str = "123";
+      let num = Number(str); // 123
+      ```
+    - Menggunakan unary plus (`+`):
+      ```javascript
+      let str = "123";
+      let num = +str; // 123
+      ```
+
+3. **Mengubah ke Boolean**:
+    - Menggunakan `Boolean()`:
+      ```javascript
+      let str = "hello";
+      let bool = Boolean(str); // true
+      ```
+    - Menggunakan double negation (`!!`):
+      ```javascript
+      let str = "hello";
+      let bool = !!str; // true
+      ```
+
+### Type Coercion (Konversi Implicit)
+
+JavaScript juga melakukan konversi tipe secara otomatis dalam konteks tertentu, seperti saat melakukan operasi dengan tipe data berbeda.
+
+1. **String Coercion**:
+    - Saat menggunakan operator `+` dengan string:
+      ```javascript
+      let num = 123;
+      let str = "Hello";
+      let result = str + num; // "Hello123"
+      ```
+
+2. **Number Coercion**:
+    - Saat menggunakan operator aritmatika lain selain `+`:
+      ```javascript
+      let str = "123";
+      let result = str * 1; // 123
+      ```
+
+3. **Boolean Coercion**:
+    - Dalam konteks logika, seperti pernyataan `if`:
+      ```javascript
+      let str = "hello";
+      if (str) {
+          // true, karena str bukan nilai falsy
+      }
+      ```
+
+### Nilai Falsy dan Truthy
+
+Beberapa nilai di JavaScript akan dievaluasi sebagai `false` saat dikonversi ke boolean, dikenal sebagai nilai **falsy**. Contohnya adalah:
+
+- `false`
+- `0`
+- `""` (string kosong)
+- `null`
+- `undefined`
+- `NaN`
+
+Nilai lainnya akan dievaluasi sebagai `true`, dikenal sebagai nilai **truthy**.
+
+### Contoh Lengkap
+
+```javascript
+// Mengubah ke String
+let num = 123;
+console.log(String(num)); // "123"
+console.log(num.toString()); // "123"
+
+// Mengubah ke Number
+let str = "123";
+console.log(Number(str)); // 123
+console.log(+str); // 123
+
+// Mengubah ke Boolean
+let str2 = "hello";
+console.log(Boolean(str2)); // true
+console.log(!!str2); // true
+
+// Konversi implisit
+let num2 = 123;
+let str3 = "Hello";
+console.log(str3 + num2); // "Hello123"
+
+let str4 = "123";
+console.log(str4 * 1); // 123
+
+if (str2) {
+    console.log("This is truthy"); // "This is truthy"
+}
+```
