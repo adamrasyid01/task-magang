@@ -25,7 +25,7 @@ Fundamental Javascript
 4. [Looping](#4-looping)
 5. [Percabangan](#5-percabangan)
 6. [TypeCasting](#6-typecasting)
-7. [Variabel](#)
+7. [Variabel](#7-variabel)
 
 
 
@@ -308,6 +308,60 @@ Beberapa nilai di JavaScript akan dievaluasi sebagai `false` saat dikonversi ke 
 
 Nilai lainnya akan dievaluasi sebagai `true`, dikenal sebagai nilai **truthy**.
 
+# 7 Variabel
+Dalam JavaScript, ada tiga cara utama untuk mendeklarasikan variabel: `var`, `let`, dan `const`. Masing-masing memiliki karakteristik dan aturan penggunaannya sendiri.
+
+### `var`
+- **Scope:** Fungsi atau global. Variabel yang dideklarasikan dengan `var` memiliki cakupan fungsi, artinya mereka hanya dapat diakses dalam fungsi di mana mereka dideklarasikan. Jika dideklarasikan di luar fungsi, mereka menjadi variabel global.
+- **Hoisting:** `var` dihoist ke atas cakupan fungsi atau global, artinya deklarasi variabel dipindahkan ke atas saat runtime. Namun, nilai tidak akan dihoist.
+- **Redeklarasi:** Variabel yang dideklarasikan dengan `var` dapat dideklarasikan ulang dalam cakupan yang sama.
+- **Contoh:**
+  ```javascript
+  function example() {
+      console.log(x); // undefined
+      var x = 5;
+      console.log(x); // 5
+  }
+  example();
+  ```
+
+### `let`
+- **Scope:** Blok. Variabel yang dideklarasikan dengan `let` memiliki cakupan blok, artinya mereka hanya dapat diakses di dalam blok (dalam `{}`) di mana mereka dideklarasikan.
+- **Hoisting:** `let` juga dihoist, tetapi tidak diinisialisasi. Mengakses variabel `let` sebelum deklarasi akan menghasilkan ReferenceError.
+- **Redeklarasi:** Tidak bisa dideklarasikan ulang dalam cakupan yang sama.
+- **Contoh:**
+  ```javascript
+  function example() {
+      console.log(x); // ReferenceError
+      let x = 5;
+      console.log(x); // 5
+  }
+  example();
+  ```
+
+### `const`
+- **Scope:** Blok. Sama seperti `let`, variabel `const` memiliki cakupan blok.
+- **Hoisting:** `const` dihoist tetapi tidak diinisialisasi. Mengakses variabel `const` sebelum deklarasi akan menghasilkan ReferenceError.
+- **Redeklarasi:** Tidak bisa dideklarasikan ulang dalam cakupan yang sama.
+- **Mutasi:** Nilai variabel `const` tidak dapat diubah (immutable). Namun, jika variabel `const` adalah objek atau array, properti atau elemen di dalamnya bisa diubah.
+- **Contoh:**
+  ```javascript
+  function example() {
+      const x = 5;
+      console.log(x); // 5
+      x = 10; // TypeError: Assignment to constant variable.
+  }
+  example();
+  
+  const arr = [1, 2, 3];
+  arr.push(4); // Tidak menghasilkan error
+  console.log(arr); // [1, 2, 3, 4]
+  ```
+
+### Ringkasan
+- Gunakan `var` jika membutuhkan cakupan fungsi, meskipun ini jarang disarankan dalam kode modern.
+- Gunakan `let` untuk variabel yang nilainya akan berubah dan hanya butuh cakupan blok.
+- Gunakan `const` untuk variabel yang tidak akan berubah nilainya, memberikan jaminan bahwa variabel tidak akan di-reassign.
 ### Contoh Lengkap
 
 ```javascript
